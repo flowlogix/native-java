@@ -12,18 +12,31 @@
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
+        <jakartaee.version>10.0.0</jakartaee.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-core-api</artifactId>
+            <version>${jakartaee.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-shaded</artifactId>
+            <version>5.1.2.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <defaultGoal>package exec:exec</defaultGoal>
+        <defaultGoal>package exec:java</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -40,7 +53,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
                             <mainClass>EntryPoint</mainClass>
                         </manifest>
                     </archive>
@@ -51,12 +63,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-jar</argument>
-                        <argument>--enable-preview</argument>
-                        <argument>${project.build.directory}/${project.artifactId}-${project.version}.${project.packaging}</argument>
-                    </arguments>
+                    <mainClass>com.flowlogix.example.HelloEntryPoint</mainClass>
                 </configuration>
             </plugin>
         </plugins>

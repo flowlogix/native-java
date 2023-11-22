@@ -1,6 +1,6 @@
-import com.flowlogix.example.HelloPrinter;
+import jakarta.enterprise.inject.spi.CDI;
+import com.flowlogix.example.HelloEntryPoint;
 
 void main() {
-    System.out.print("Hello ");
-    new HelloPrinter().printHello("Anya");
+    HelloEntryPoint.main();
 }
