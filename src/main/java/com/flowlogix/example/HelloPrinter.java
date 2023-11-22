@@ -1,7 +1,6 @@
 package com.flowlogix.example;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import lombok.SneakyThrows;
 import java.time.Duration;
