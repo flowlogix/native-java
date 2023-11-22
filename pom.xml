@@ -82,6 +82,7 @@
                         <configuration>
                             <buildArgs>
                                 <arg>--enable-preview</arg>
+                                <arg>-H:ReflectionConfigurationFiles=${project.build.resources[0].directory}/reflection.json</arg>
                             </buildArgs>
                         </configuration>
                         <executions>

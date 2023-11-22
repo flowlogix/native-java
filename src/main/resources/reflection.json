@@ -1,0 +1,10 @@
+[
+  {
+    "name":"org.jboss.weld.environment.se.Weld",
+
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "allDeclaredFields" : true,
+    "allPublicFields" : true
+  }
+]
