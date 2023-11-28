@@ -92,6 +92,9 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.flowlogix.example.HelloEntryPoint</mainClass>
+                    <arguments>
+                        <argument>Anya!</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
