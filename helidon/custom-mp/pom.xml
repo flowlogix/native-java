@@ -13,18 +13,19 @@
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
         <jakartaee.version>10.0.0</jakartaee.version>
         <jandex.version>3.1.6</jandex.version>
+        <helidon.version>4.0.1</helidon.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.helidon.microprofile.cdi</groupId>
             <artifactId>helidon-microprofile-cdi</artifactId>
-            <version>4.0.1</version>
+            <version>${helidon.version}</version>
         </dependency>
         <dependency>
             <groupId>io.helidon.logging</groupId>
             <artifactId>helidon-logging-jul</artifactId>
-            <version>4.0.1</version>
+            <version>${helidon.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -108,5 +109,80 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.graalvm.buildtools</groupId>
+                    <artifactId>native-maven-plugin</artifactId>
+                    <version>0.9.28</version>
+                    <extensions>true</extensions>
+                    <executions>
+                        <execution>
+                            <id>resource-config</id>
+                            <phase>package</phase>
+                            <configuration>
+                                <!-- generate records for all module's resources -->
+                                <isDetectionEnabled>true</isDetectionEnabled>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>build-native-image</id>
+                            <phase>package</phase>
+                            <configuration>
+                                <!-- generate an argument file for native image - great for troubleshooting -->
+                                <useArgFile>true</useArgFile>
+                                <!-- this needs to be defined to have a single set of jars on classpath,
+                                default approach would add classpath of module (from maven) and from jar (manifest) -->
+                                <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                                <imageName>${project.build.finalName}</imageName>
+                                <fallback>false</fallback>
+                                <metadataRepository>
+                                    <enabled>false</enabled>
+                                </metadataRepository>
+                                <buildArgs>
+                                    <!-- Some native image features use the svm dependencies which require additional exports -->
+                                    <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED</arg>
+                                </buildArgs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>resource-config</id>
+                                <goals>
+                                    <goal>generateResourceConfig</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>build-native-image</id>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>io.helidon.integrations.graal</groupId>
+                    <artifactId>helidon-mp-graal-native-image-extension</artifactId>
+                    <version>${helidon.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
