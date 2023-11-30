@@ -3,58 +3,107 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>io.helidon.applications</groupId>
-        <artifactId>helidon-mp</artifactId>
-        <version>4.0.1</version>
-        <relativePath/>
-    </parent>
     <groupId>me.lprimak-helidon</groupId>
     <artifactId>custom-mp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <mainClass>com.flowlogix.example.HelloEntryPoint</mainClass>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
+        <jakartaee.version>10.0.0</jakartaee.version>
+        <jandex.version>3.1.6</jandex.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.helidon.microprofile.cdi</groupId>
             <artifactId>helidon-microprofile-cdi</artifactId>
+            <version>4.0.1</version>
         </dependency>
         <dependency>
             <groupId>io.helidon.logging</groupId>
             <artifactId>helidon-logging-jul</artifactId>
+            <version>4.0.1</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.smallrye</groupId>
             <artifactId>jandex</artifactId>
+            <version>${jandex.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-core-api</artifactId>
+            <version>${jakartaee.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-libs</id>
-                    </execution>
-                </executions>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <proc>full</proc>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>io.smallrye</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
+                <version>3.1.6</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.smallrye</groupId>
+                        <artifactId>jandex</artifactId>
+                        <version>${jandex.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.flowlogix.example.HelloEntryPoint</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs</classpathPrefix>
+                            <useUniqueVersions>false</useUniqueVersions>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-libs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <includeScope>runtime</includeScope>
+                            <!-- Hack to work-around https://github.com/square/okio/issues/1306 -->
+                            <excludeArtifactIds>okio</excludeArtifactIds>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
