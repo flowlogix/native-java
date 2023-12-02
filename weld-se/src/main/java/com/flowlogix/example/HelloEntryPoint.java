@@ -1,17 +1,14 @@
 package com.flowlogix.example;
 
-import com.flowlogix.weld.HelidonProxyServices;
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
-import org.jboss.weld.environment.se.Weld;
-import org.jboss.weld.environment.se.WeldContainer;
 
 public class HelloEntryPoint {
-    private static final WeldContainer container;
+    private static final SeContainer container;
 
     static {
-        container = new Weld()
-                .addServices(new HelidonProxyServices())
-                .initialize();
+        container = SeContainerInitializer.newInstance().initialize();
     }
 
     public static void printHello(String name) {
