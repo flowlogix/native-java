@@ -1,5 +1,5 @@
 import com.flowlogix.example.HelloEntryPoint;
 
-void main() {
-    HelloEntryPoint.main("Anya");
+void main(String... args) {
+    HelloEntryPoint.entry(args[0]);
 }
