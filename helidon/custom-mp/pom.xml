@@ -14,13 +14,45 @@
         <jakartaee.version>10.0.0</jakartaee.version>
         <jandex.version>3.1.6</jandex.version>
         <helidon.version>4.0.1</helidon.version>
+        <weld.version>5.1.2.Final</weld.version>
+        <slf4j.version>2.0.9</slf4j.version>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+        </dependency>
+        <dependency>
             <groupId>io.helidon.microprofile.cdi</groupId>
             <artifactId>helidon-microprofile-cdi</artifactId>
             <version>${helidon.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.helidon</groupId>
+                    <artifactId>helidon</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.helidon.microprofile.weld</groupId>
+                    <artifactId>weld-se-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.inject</groupId>
+                    <artifactId>jakarta.inject-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.helidon.logging</groupId>
@@ -39,7 +71,22 @@
             <artifactId>jakarta.jakartaee-core-api</artifactId>
             <version>${jakartaee.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.flowlogix</groupId>
+            <artifactId>weld-repackaged</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <classifier>native</classifier>
+        </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-lite-extension-translator</artifactId>
+                <version>${weld.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -140,6 +187,12 @@
                                     <enabled>false</enabled>
                                 </metadataRepository>
                                 <buildArgs>
+                                    <arg>--enable-preview</arg>
+                                    <arg>-H:+UnlockExperimentalVMOptions</arg>
+                                    <arg>-H:+DashboardAll</arg>
+                                    <arg>-H:DashboardDump=${project.build.directory}/${project.build.finalName}</arg>
+                                    <arg>-march=native</arg>
+                                    <arg>--initialize-at-build-time=org.slf4j.jul.JDK14LoggerAdapter</arg>
                                     <!-- Some native image features use the svm dependencies which require additional exports -->
                                     <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED</arg>
                                 </buildArgs>
@@ -169,7 +222,7 @@
                             <execution>
                                 <id>build-native-image</id>
                                 <goals>
-                                    <goal>compile</goal>
+                                    <goal>compile-no-fork</goal>
                                 </goals>
                             </execution>
                         </executions>
