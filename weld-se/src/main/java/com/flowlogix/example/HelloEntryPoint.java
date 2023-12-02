@@ -5,11 +5,7 @@ import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 
 public class HelloEntryPoint {
-    private static final SeContainer container;
-
-    static {
-        container = SeContainerInitializer.newInstance().initialize();
-    }
+    private static final SeContainer container = SeContainerInitializer.newInstance().initialize();
 
     public static void printHello(String name) {
         var helloPrinter = CDI.current().select(HelloPrinter.class).get();
