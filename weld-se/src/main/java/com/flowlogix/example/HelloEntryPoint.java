@@ -3,7 +3,9 @@ package com.flowlogix.example;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class HelloEntryPoint {
     private static final Void loggerInit = LoggingStartup.init();
     private static final SeContainer container = SeContainerInitializer.newInstance().initialize();
@@ -13,9 +15,14 @@ public class HelloEntryPoint {
         helloPrinter.printHello(name);
     }
 
-    public static void entry(String name) {
+    public static void entry(String... args) {
         try (container) {
-            printHello(name);
+            if (args.length == 0) {
+                log.warn("No one to greet \uD83D\uDE00");
+            } else {
+                String name = args[0];
+                printHello(name);
+            }
         }
     }
 }

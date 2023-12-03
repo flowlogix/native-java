@@ -6,6 +6,6 @@ import jakarta.enterprise.context.Dependent;
 public class HelloGreeter implements Greeter {
     @Override
     public String greet(String name) {
-        return "Hello %s!".formatted(name);
+        return "Hello %s \uD83D\uDE00".formatted(name);
     }
 }
