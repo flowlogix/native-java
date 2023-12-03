@@ -23,6 +23,12 @@
             <version>1.18.30</version>
         </dependency>
         <dependency>
+            <groupId>com.flowlogix</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>5.1.2.Final</version>
+            <classifier>native</classifier>
+        </dependency>
+        <dependency>
             <groupId>io.helidon.microprofile.cdi</groupId>
             <artifactId>helidon-microprofile-cdi</artifactId>
             <version>${helidon.version}</version>
@@ -72,12 +78,6 @@
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-core-api</artifactId>
             <version>${jakartaee.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.flowlogix</groupId>
-            <artifactId>weld-repackaged</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <classifier>native</classifier>
         </dependency>
     </dependencies>
 
