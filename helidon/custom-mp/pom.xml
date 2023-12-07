@@ -51,14 +51,6 @@
                     <groupId>io.helidon.microprofile.weld</groupId>
                     <artifactId>weld-se-core</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>jakarta.inject</groupId>
-                    <artifactId>jakarta.inject-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.weld</groupId>
-                    <artifactId>weld-lite-extension-translator</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
