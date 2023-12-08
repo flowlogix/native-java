@@ -115,7 +115,6 @@
                         <configuration>
                             <buildArgs>
                                 <arg>--enable-preview</arg>
-                                <arg>--initialize-at-build-time=com.flowlogix.example,org.slf4j.jul.JDK14LoggerAdapter</arg>
                                 <arg>-H:+UnlockExperimentalVMOptions</arg>
                                 <arg>-H:+DashboardAll</arg>
                                 <arg>-H:DashboardDump=${project.build.directory}/${project.build.finalName}</arg>
