@@ -16,6 +16,7 @@
 
     <properties>
         <helidon.version>4.0.1</helidon.version>
+        <hibernate.version>6.4.0.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -73,8 +74,10 @@
         <dependencies>
             <dependency>
                 <groupId>org.hibernate.orm</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>6.4.0.Final</version>
+                <artifactId>hibernate-platform</artifactId>
+                <version>${hibernate.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
