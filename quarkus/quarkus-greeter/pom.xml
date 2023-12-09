@@ -3,7 +3,6 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.flowlogix.native</groupId>
     <artifactId>quarkus-greeter</artifactId>
     <name>Quarkus Greeter</name>
     <version>1.x-SNAPSHOT</version>
@@ -23,7 +22,7 @@
         <dependency>
             <groupId>com.flowlogix.native</groupId>
             <artifactId>birthday-greeter</artifactId>
-            <version>${project.version}</version>
+            <version>1.x-SNAPSHOT</version>
         </dependency>
 
         <dependency>

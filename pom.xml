@@ -14,12 +14,14 @@
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
         <maven.compiler.release>21</maven.compiler.release>
         <jakarta.ee.version>10.0.0</jakarta.ee.version>
+        <slf4j.version>2.0.9</slf4j.version>
     </properties>
 
     <modules>
         <module>greeter</module>
         <module>birthday-greeter</module>
         <module>quarkus/quarkus-greeter</module>
+        <module>weld-se-greeter</module>
     </modules>
 
     <dependencyManagement>
@@ -28,10 +30,22 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>2.0.9</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>2.0.9</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-web-api</artifactId>
+                <version>${jakarta.ee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-core-api</artifactId>
                 <version>${jakarta.ee.version}</version>
             </dependency>
             <dependency>
@@ -44,6 +58,7 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>42.7.0</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

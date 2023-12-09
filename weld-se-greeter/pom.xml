@@ -4,27 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.flowlogix.native</groupId>
-    <artifactId>java-native</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>weld-se-greeter</artifactId>
+    <version>1.x-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.release>21</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
-        <jakartaee.version>10.0.0</jakartaee.version>
-    </properties>
+    <parent>
+        <groupId>com.flowlogix.native</groupId>
+        <artifactId>java-native-parent</artifactId>
+        <version>1.x-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
+            <groupId>com.flowlogix.native</groupId>
+            <artifactId>greeter</artifactId>
+            <version>1.x-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-core-api</artifactId>
-            <version>${jakartaee.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -43,19 +45,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
-            <version>2.0.9</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <proc>full</proc>
-                </configuration>
-            </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.3.0</version>
