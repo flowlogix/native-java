@@ -67,7 +67,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.6.1</version>
                 <executions>
                     <execution>
                         <id>copy-libs</id>
@@ -125,6 +124,16 @@
                                     <goal>compile-no-fork</goal>
                                 </goals>
                                 <phase>package</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-libs</id>
+                                <phase>none</phase>
                             </execution>
                         </executions>
                     </plugin>
