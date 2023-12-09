@@ -11,7 +11,7 @@
         <groupId>com.flowlogix.native</groupId>
         <artifactId>java-native-parent</artifactId>
         <version>1.x-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../..</relativePath>
     </parent>
 
     <properties>
