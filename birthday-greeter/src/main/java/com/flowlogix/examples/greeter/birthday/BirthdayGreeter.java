@@ -2,7 +2,7 @@ package com.flowlogix.examples.greeter.birthday;
 
 import com.flowlogix.examples.greeter.Greeter;
 import com.flowlogix.examples.greeter.HelloGreeter;
-import com.flowlogix.greeter.entities.Sample;
+import com.flowlogix.examples.greeter.entities.Sample;
 import jakarta.annotation.Priority;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Alternative;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.flowlogix.greeter.entities;
+package com.flowlogix.examples.greeter.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
