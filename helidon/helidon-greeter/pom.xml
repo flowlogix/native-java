@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>com.flowlogix.native</groupId>
-            <artifactId>birthday-greeter</artifactId>
+            <artifactId>greeter</artifactId>
             <version>1.x-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -66,36 +66,6 @@
         <dependency>
             <groupId>io.smallrye</groupId>
             <artifactId>jandex</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.helidon.integrations.cdi</groupId>
-            <artifactId>helidon-integrations-cdi-jpa</artifactId>
-            <version>${helidon.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.helidon.integrations.cdi</groupId>
-            <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
-            <version>${helidon.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.helidon.integrations.cdi</groupId>
-            <artifactId>helidon-integrations-cdi-datasource-hikaricp</artifactId>
-            <version>${helidon.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.helidon.integrations.cdi</groupId>
-            <artifactId>helidon-integrations-cdi-hibernate</artifactId>
-            <version>${helidon.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>yasson</artifactId>
-            <version>3.0.3</version>
         </dependency>
     </dependencies>
 
@@ -226,6 +196,46 @@
                     <groupId>io.helidon.integrations.graal</groupId>
                     <artifactId>helidon-mp-graal-native-image-extension</artifactId>
                     <version>${helidon.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>helidon-jpa</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.flowlogix.native</groupId>
+                    <artifactId>birthday-greeter</artifactId>
+                    <version>1.x-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.helidon.integrations.cdi</groupId>
+                    <artifactId>helidon-integrations-cdi-jpa</artifactId>
+                    <version>${helidon.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.helidon.integrations.cdi</groupId>
+                    <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
+                    <version>${helidon.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.helidon.integrations.cdi</groupId>
+                    <artifactId>helidon-integrations-cdi-datasource-hikaricp</artifactId>
+                    <version>${helidon.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.helidon.integrations.cdi</groupId>
+                    <artifactId>helidon-integrations-cdi-hibernate</artifactId>
+                    <version>${helidon.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.eclipse</groupId>
+                    <artifactId>yasson</artifactId>
+                    <version>3.0.3</version>
                 </dependency>
             </dependencies>
         </profile>
