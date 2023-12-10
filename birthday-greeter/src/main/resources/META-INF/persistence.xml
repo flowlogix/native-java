@@ -5,7 +5,6 @@
              version="3.1">
     <persistence-unit name="hope" transaction-type="JTA">
         <jta-data-source>hope</jta-data-source>
-        <jar-file>libs/birthday-greeter-1.x-SNAPSHOT.jar</jar-file>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
     </persistence-unit>
 </persistence>
