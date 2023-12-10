@@ -7,4 +7,8 @@
         <jta-data-source>hope</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
     </persistence-unit>
+    <persistence-unit name="jndi-hope" transaction-type="JTA">
+        <jta-data-source>java:app/hope</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    </persistence-unit>
 </persistence>

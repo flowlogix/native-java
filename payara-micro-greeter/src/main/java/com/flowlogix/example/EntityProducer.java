@@ -9,6 +9,6 @@ import lombok.Getter;
 @RequestScoped
 public class EntityProducer {
     @Getter(onMethod = @__(@Produces))
-    @PersistenceContext(unitName = "hope")
+    @PersistenceContext(unitName = "jndi-hope")
     EntityManager entityManager;
 }
