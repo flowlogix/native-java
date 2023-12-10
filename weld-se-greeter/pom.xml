@@ -13,6 +13,10 @@
         <version>1.x-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <entryPoint>EntryPoint</entryPoint>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.flowlogix.native</groupId>
@@ -52,7 +56,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>EntryPoint</mainClass>
+                            <mainClass>${entryPoint}</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs</classpathPrefix>
                             <useUniqueVersions>false</useUniqueVersions>
@@ -97,6 +101,17 @@
             <build>
                 <plugins>
                     <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <classifier>native</classifier>
+                            <archive>
+                                <manifest combine.self="override">
+                                    <mainClass>${entryPoint}</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
                         <version>0.9.28</version>
@@ -120,16 +135,6 @@
                                     <goal>compile-no-fork</goal>
                                 </goals>
                                 <phase>package</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>copy-libs</id>
-                                <phase>none</phase>
                             </execution>
                         </executions>
                     </plugin>

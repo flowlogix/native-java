@@ -17,6 +17,7 @@
     <properties>
         <helidon.version>4.0.1</helidon.version>
         <hibernate.version>6.4.0.Final</hibernate.version>
+        <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
     <dependencies>
@@ -89,7 +90,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.flowlogix.example.HelloEntryPoint</mainClass>
+                            <mainClass>${entryPoint}</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs</classpathPrefix>
                             <useUniqueVersions>false</useUniqueVersions>
@@ -128,42 +129,6 @@
                     <artifactId>native-maven-plugin</artifactId>
                     <version>0.9.28</version>
                     <extensions>true</extensions>
-                    <executions>
-                        <execution>
-                            <id>resource-config</id>
-                            <phase>package</phase>
-                            <configuration>
-                                <!-- generate records for all module's resources -->
-                                <isDetectionEnabled>true</isDetectionEnabled>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>build-native-image</id>
-                            <phase>package</phase>
-                            <configuration>
-                                <!-- generate an argument file for native image - great for troubleshooting -->
-                                <useArgFile>true</useArgFile>
-                                <!-- this needs to be defined to have a single set of jars on classpath,
-                                default approach would add classpath of module (from maven) and from jar (manifest) -->
-                                <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-                                <imageName>${project.build.finalName}</imageName>
-                                <fallback>false</fallback>
-                                <metadataRepository>
-                                    <enabled>false</enabled>
-                                </metadataRepository>
-                                <buildArgs>
-                                    <arg>--enable-preview</arg>
-                                    <arg>-H:+UnlockExperimentalVMOptions</arg>
-                                    <arg>-H:+DashboardAll</arg>
-                                    <arg>-H:DashboardDump=${project.build.directory}/${project.build.finalName}</arg>
-                                    <arg>--strict-image-heap</arg>
-                                    <arg>-march=native</arg>
-                                    <!-- Some native image features use the svm dependencies which require additional exports -->
-                                    <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED</arg>
-                                </buildArgs>
-                            </configuration>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -175,30 +140,60 @@
             <build>
                 <plugins>
                     <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <classifier>native</classifier>
+                            <archive>
+                                <manifest combine.self="override">
+                                    <mainClass>${entryPoint}</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
                         <executions>
-<!--                            <execution>-->
-<!--                                <id>resource-config</id>-->
-<!--                                <goals>-->
-<!--                                    <goal>generateResourceConfig</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
+                            <execution>
+                                <id>resource-config</id>
+                                <configuration>
+                                    <!-- generate records for all module's resources -->
+                                    <isDetectionEnabled>true</isDetectionEnabled>
+                                </configuration>
+<!--                                <phase>package</phase>-->
+                                <phase>none</phase>
+                                <goals>
+                                    <goal>generateResourceConfig</goal>
+                                </goals>
+                            </execution>
                             <execution>
                                 <id>build-native-image</id>
+                                <configuration>
+                                    <!-- generate an argument file for native image - great for troubleshooting -->
+                                    <useArgFile>true</useArgFile>
+                                    <!-- this needs to be defined to have a single set of jars on classpath,
+                                    default approach would add classpath of module (from maven) and from jar (manifest) -->
+                                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                                    <imageName>${project.build.finalName}</imageName>
+                                    <fallback>false</fallback>
+                                    <metadataRepository>
+                                        <enabled>false</enabled>
+                                    </metadataRepository>
+                                    <buildArgs>
+                                        <arg>--enable-preview</arg>
+                                        <arg>-H:+UnlockExperimentalVMOptions</arg>
+                                        <arg>-H:+DashboardAll</arg>
+                                        <arg>-H:DashboardDump=${project.build.directory}/${project.build.finalName}</arg>
+                                        <arg>--strict-image-heap</arg>
+                                        <arg>-march=native</arg>
+                                        <!-- Some native image features use the svm dependencies which require additional exports -->
+                                        <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED</arg>
+                                    </buildArgs>
+                                </configuration>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>compile-no-fork</goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>copy-libs</id>
-                                <phase>none</phase>
                             </execution>
                         </executions>
                     </plugin>
