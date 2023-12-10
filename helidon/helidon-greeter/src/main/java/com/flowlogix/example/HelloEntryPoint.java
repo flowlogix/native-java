@@ -13,7 +13,8 @@ import org.jboss.weld.context.activator.ActivateRequestContext;
 public class HelloEntryPoint {
     @Inject
     CommandLine cmdLine;
-    @Inject HelloPrinter helloPrinter;
+    @Inject
+    HelloPrinter helloPrinter;
 
     public static void main(String[] args) {
         DynamicWeld.initialize();

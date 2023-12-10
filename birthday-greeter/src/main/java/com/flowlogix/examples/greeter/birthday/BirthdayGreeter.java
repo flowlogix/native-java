@@ -23,10 +23,12 @@ public class BirthdayGreeter implements Greeter {
     @Override
     @Transactional
     public String greet(String name) {
-        Sample birthday = entityManager.createNamedQuery("Sample.findAll", Sample.class)
+        return entityManager.createNamedQuery("Sample.findAll", Sample.class)
                 .setMaxResults(1).getResultStream()
-                .findFirst().get();
-        birthday.setDateOfBirth(birthday.getDateOfBirth().plusDays(1));
-        return "%s Your birthday is %s".formatted(helloGreeter.greet(name), birthday.getDateOfBirth());
+                .findFirst().map(birthday -> {
+                    birthday.setDateOfBirth(birthday.getDateOfBirth().plusDays(1));
+                    return "%s Your birthday is %s".formatted(helloGreeter.greet(name),
+                            birthday.getDateOfBirth());
+                }).orElseGet(() -> helloGreeter.greet(name));
     }
 }
