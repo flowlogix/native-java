@@ -16,7 +16,7 @@
 
     <properties>
         <helidon.version>4.0.3</helidon.version>
-        <hibernate.version>6.4.1.Final</hibernate.version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
@@ -35,8 +35,8 @@
         </dependency>
         <dependency>
             <groupId>com.flowlogix.weld</groupId>
-            <artifactId>weld-se-native</artifactId>
-            <version>5.1.2-4.Final</version>
+            <artifactId>weld-native</artifactId>
+            <version>5.1.2.Final</version>
         </dependency>
 
         <dependency>
