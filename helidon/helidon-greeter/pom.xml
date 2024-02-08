@@ -16,7 +16,6 @@
 
     <properties>
         <helidon.version>4.0.5</helidon.version>
-        <hibernate.version>6.4.3.Final</hibernate.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
@@ -70,18 +69,6 @@
             <artifactId>jandex</artifactId>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.hibernate.orm</groupId>
-                <artifactId>hibernate-platform</artifactId>
-                <version>${hibernate.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
