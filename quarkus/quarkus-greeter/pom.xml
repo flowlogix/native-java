@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <quarkus.version>3.7.2</quarkus.version>
+        <quarkus.version>3.7.3</quarkus.version>
     </properties>
 
     <dependencies>
