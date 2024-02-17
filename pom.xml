@@ -11,15 +11,14 @@
 
     <parent>
         <groupId>com.flowlogix</groupId>
-        <artifactId>base-pom</artifactId>
-        <version>1</version>
+        <artifactId>infra-pom</artifactId>
+        <version>2</version>
     </parent>
 
     <properties>
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
-        <jakarta.ee.version>10.0.0</jakarta.ee.version>
         <hibernate.version>6.4.4.Final</hibernate.version>
-        <slf4j.version>2.0.9</slf4j.version>
+        <slf4j.version>2.0.12</slf4j.version>
     </properties>
 
     <modules>
@@ -36,13 +35,13 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>2.0.12</version>
+                <version>${slf4j.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jdk14</artifactId>
-                <version>2.0.12</version>
+                <version>${slf4j.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
@@ -58,7 +57,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.30</version>
+                <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -94,7 +93,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <proc>full</proc>
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
