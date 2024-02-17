@@ -17,7 +17,7 @@
 
     <properties>
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
-        <checkstyle.skip>true</checkstyle.skip>
+        <checkstyle.supressionsLocation>${nativejava.basedir}/checkstyle/suppressions.xml</checkstyle.supressionsLocation>
         <hibernate.version>6.4.4.Final</hibernate.version>
         <slf4j.version>2.0.12</slf4j.version>
     </properties>
@@ -97,6 +97,33 @@
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>directory-of</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <property>nativejava.basedir</property>
+                            <project>
+                                <groupId>com.flowlogix.native</groupId>
+                                <artifactId>java-native-parent</artifactId>
+                            </project>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <excludes>EntryPoint.java</excludes>
                 </configuration>
             </plugin>
         </plugins>
