@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <payara.version>6.2024.1</payara.version>
+        <payara.version>6.2024.2</payara.version>
     </properties>
 
     <dependencies>
