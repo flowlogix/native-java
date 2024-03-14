@@ -14,10 +14,6 @@
         <version>1.x-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <payara.version>6.2024.2</payara.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.flowlogix.native</groupId>
