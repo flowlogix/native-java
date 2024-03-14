@@ -11,13 +11,17 @@
 
     <parent>
         <groupId>com.flowlogix</groupId>
-        <artifactId>infra-pom</artifactId>
-        <version>7</version>
+        <artifactId>payara-pom</artifactId>
+        <version>8-M2</version>
     </parent>
 
     <properties>
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
         <checkstyle.supressionsLocation>${nativejava.basedir}/checkstyle/suppressions.xml</checkstyle.supressionsLocation>
+        <base.directory.property>nativejava.basedir</base.directory.property>
+        <base.directory.groupId>com.flowlogix.native</base.directory.groupId>
+        <base.directory.artifactId>java-native-parent</base.directory.artifactId>
+        <payara.start.disable>true</payara.start.disable>
         <hibernate.version>6.4.4.Final</hibernate.version>
         <slf4j.version>2.0.12</slf4j.version>
     </properties>
@@ -91,34 +95,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <id>directories</id>
-                        <goals>
-                            <goal>directory-of</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <property>nativejava.basedir</property>
-                            <project>
-                                <groupId>com.flowlogix.native</groupId>
-                                <artifactId>java-native-parent</artifactId>
-                            </project>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>

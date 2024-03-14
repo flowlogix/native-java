@@ -16,6 +16,7 @@
 
     <properties>
         <helidon.version>4.0.5</helidon.version>
+        <weld.version>5.1.2.Final</weld.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
@@ -35,7 +36,7 @@
         <dependency>
             <groupId>com.flowlogix.weld</groupId>
             <artifactId>weld-native</artifactId>
-            <version>5.1.2.Final</version>
+            <version>${weld.version}</version>
         </dependency>
 
         <dependency>
@@ -69,6 +70,16 @@
             <artifactId>jandex</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-lite-extension-translator</artifactId>
+                <version>${weld.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
