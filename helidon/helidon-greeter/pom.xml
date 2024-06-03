@@ -78,6 +78,11 @@
                 <artifactId>weld-lite-extension-translator</artifactId>
                 <version>${weld.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.eclipse.angus</groupId>
+                <artifactId>angus-activation</artifactId>
+                <version>2.0.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -216,11 +221,27 @@
                     <groupId>io.helidon.integrations.cdi</groupId>
                     <artifactId>helidon-integrations-cdi-jpa</artifactId>
                     <version>${helidon.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.activation</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.helidon.integrations.cdi</groupId>
                     <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
                     <version>${helidon.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.el</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.enterprise</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.helidon.integrations.cdi</groupId>
@@ -231,6 +252,12 @@
                     <groupId>io.helidon.integrations.cdi</groupId>
                     <artifactId>helidon-integrations-cdi-hibernate</artifactId>
                     <version>${helidon.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.activation</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>
