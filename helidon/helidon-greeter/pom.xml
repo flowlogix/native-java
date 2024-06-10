@@ -93,6 +93,21 @@
                 <artifactId>jakarta.json-api</artifactId>
                 <version>2.1.3</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>4.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>1.14.17</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>3.5.3.Final</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -225,6 +240,10 @@
                     <version>1.x-SNAPSHOT</version>
                 </dependency>
                 <dependency>
+                    <groupId>jakarta.platform</groupId>
+                    <artifactId>jakarta.jakartaee-web-api</artifactId>
+                </dependency>
+                <dependency>
                     <groupId>io.helidon.integrations.cdi</groupId>
                     <artifactId>helidon-integrations-cdi-jpa</artifactId>
                     <version>${helidon.version}</version>
@@ -259,12 +278,6 @@
                     <groupId>io.helidon.integrations.cdi</groupId>
                     <artifactId>helidon-integrations-cdi-hibernate</artifactId>
                     <version>${helidon.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>jakarta.activation</groupId>
-                            <artifactId>*</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>
