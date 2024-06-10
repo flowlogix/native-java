@@ -193,9 +193,6 @@
                                     <buildArgs>
                                         <arg>--enable-preview</arg>
                                         <arg>-H:+UnlockExperimentalVMOptions</arg>
-                                        <arg>-H:+DashboardAll</arg>
-                                        <arg>-H:DashboardDump=${project.build.directory}/${project.build.finalName}</arg>
-                                        <arg>--strict-image-heap</arg>
                                         <arg>-march=native</arg>
                                         <!-- Some native image features use the svm dependencies which require additional exports -->
                                         <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED</arg>
