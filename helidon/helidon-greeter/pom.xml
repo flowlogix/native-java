@@ -186,8 +186,7 @@
                                     <!-- generate records for all module's resources -->
                                     <isDetectionEnabled>true</isDetectionEnabled>
                                 </configuration>
-<!--                                <phase>package</phase>-->
-                                <phase>none</phase>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>generateResourceConfig</goal>
                                 </goals>
@@ -290,6 +289,27 @@
                     <scope>runtime</scope>
                 </dependency>
             </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.hibernate.orm.tooling</groupId>
+                        <artifactId>hibernate-enhance-maven-plugin</artifactId>
+                        <version>6.3.1.Final</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <failOnError>true</failOnError>
+                                    <enableLazyInitialization>true</enableLazyInitialization>
+                                    <enableDirtyTracking>true</enableDirtyTracking>
+                                </configuration>
+                                <goals>
+                                    <goal>enhance</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
