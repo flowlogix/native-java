@@ -24,7 +24,7 @@
         <base.directory.groupId>com.flowlogix.native</base.directory.groupId>
         <base.directory.artifactId>java-native-parent</base.directory.artifactId>
         <payara.start.disable>true</payara.start.disable>
-        <slf4j.version>2.0.13</slf4j.version>
+        <slf4j.version>2.0.14</slf4j.version>
     </properties>
 
     <modules>
