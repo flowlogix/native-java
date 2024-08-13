@@ -307,6 +307,11 @@
                         <artifactId>parsson</artifactId>
                         <version>1.1.6</version>
                     </dependency>
+                    <dependency>
+                        <groupId>io.smallrye</groupId>
+                        <artifactId>jandex</artifactId>
+                        <version>3.1.2</version>
+                    </dependency>
                 </dependencies>
             </dependencyManagement>
 
