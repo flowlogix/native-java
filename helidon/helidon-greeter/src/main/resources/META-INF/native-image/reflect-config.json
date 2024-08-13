@@ -35,6 +35,6 @@
     "queryAllDeclaredMethods": true,
     "queryAllDeclaredConstructors": true,
     "queryAllPublicMethods": true,
-    "queryAllPublicConstructors": true,
+    "queryAllPublicConstructors": true
   }
 ]
