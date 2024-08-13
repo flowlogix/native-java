@@ -30,10 +30,14 @@ public class HelloEntryPoint {
     @SuppressWarnings("checkstyle:ConstantName")
     private static final SeContainer container = SeContainerInitializer.newInstance().initialize();
 
+    public static void main(String... args) {
+        HelloEntryPoint.entry(args);
+    }
+
     public static void entry(String... args) {
         try (container) {
             CDI.current().select(CommandLine.class).get().setArguments(args)
-                    .run(CDI.current().select(HelloPrinter.class).get()::printHello);
+                    .accept(CDI.current().select(HelloPrinter.class).get()::printHello);
         }
     }
 }

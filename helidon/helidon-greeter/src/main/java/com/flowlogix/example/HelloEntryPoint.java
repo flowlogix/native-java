@@ -39,6 +39,6 @@ public class HelloEntryPoint {
 
     @ActivateRequestContext
     void entryPoint(String[] args) {
-        cmdLine.setArguments(args).run(helloPrinter::printHello);
+        cmdLine.setArguments(args).accept(helloPrinter::printHello);
     }
 }

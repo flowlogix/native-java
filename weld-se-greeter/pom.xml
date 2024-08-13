@@ -14,7 +14,7 @@
     </parent>
 
     <properties>
-        <entryPoint>EntryPoint</entryPoint>
+        <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
     <dependencies>

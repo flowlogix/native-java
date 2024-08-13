@@ -30,7 +30,7 @@ public class HelloEntryPoint implements QuarkusApplication {
 
     @Override
     public int run(String... args) {
-        cmdLine.setArguments(args).run(helloPrinter::printHello);
+        cmdLine.setArguments(args).accept(helloPrinter::printHello);
         return 0;
     }
 }

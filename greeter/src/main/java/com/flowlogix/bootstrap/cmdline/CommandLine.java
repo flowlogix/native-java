@@ -16,18 +16,23 @@
 package com.flowlogix.bootstrap.cmdline;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import java.lang.ScopedValue.Carrier;
 import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 @ApplicationScoped
 public class CommandLine {
-    private final ScopedValue<String[]> arguments = ScopedValue.newInstance();
+    private final ThreadLocal<String[]> arguments = new ThreadLocal<>();
 
-    public Carrier setArguments(String[] args) {
-        return ScopedValue.where(arguments, args);
+    public Consumer<Runnable> setArguments(String[] args) {
+        arguments.set(args);
+        return runnable -> {
+            runnable.run();
+            arguments.remove();
+        };
     }
 
     public String[] getArguments() {
-        return arguments.orElseThrow(NoSuchElementException::new);
+        return Optional.ofNullable(arguments.get()).orElseThrow(NoSuchElementException::new);
     }
 }

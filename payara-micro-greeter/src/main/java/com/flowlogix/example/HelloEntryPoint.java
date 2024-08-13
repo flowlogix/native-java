@@ -52,6 +52,6 @@ public class HelloEntryPoint {
                         .toArray(String[]::new))
                 .orElse(new String[0]);
         log.debug("Number or arguments is {} and the array is {}", args.length, args);
-        cmdLine.setArguments(args).run(helloPrinter::printHello);
+        cmdLine.setArguments(args).accept(helloPrinter::printHello);
     }
 }
