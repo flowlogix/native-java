@@ -104,6 +104,11 @@
                 <version>4.0.2</version>
             </dependency>
             <dependency>
+                <groupId>jakarta.json.bind</groupId>
+                <artifactId>jakarta.json.bind-api</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+            <dependency>
                 <groupId>net.bytebuddy</groupId>
                 <artifactId>byte-buddy</artifactId>
                 <version>1.14.18</version>
