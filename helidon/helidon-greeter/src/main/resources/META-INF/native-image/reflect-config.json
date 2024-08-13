@@ -1,5 +1,11 @@
 [
   {
-    "name" : "org.hibernate.dialect.PostgreSQLInetJdbcType"
+    "name" : "org.hibernate.dialect.PostgreSQLInetJdbcType",
+    "queryAllDeclaredConstructors" : true,
+    "queryAllPublicConstructors" : true,
+    "queryAllDeclaredMethods" : true,
+    "queryAllPublicMethods" : true,
+    "allDeclaredClasses" : true,
+    "allPublicClasses" : true
   }
 ]
