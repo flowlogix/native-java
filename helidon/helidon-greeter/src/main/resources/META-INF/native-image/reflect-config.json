@@ -16,7 +16,7 @@
     "queryAllDeclaredMethods": true,
     "queryAllDeclaredConstructors": true,
     "queryAllPublicMethods": true,
-    "queryAllPublicConstructors": true,
+    "queryAllPublicConstructors": true
   },
   {
     "name" : "org.hibernate.dialect.PostgreSQLIntervalSecondJdbcType",
