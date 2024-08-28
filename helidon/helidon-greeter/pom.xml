@@ -16,7 +16,6 @@
 
     <properties>
         <helidon.version>4.1.0</helidon.version>
-        <weld.version>5.1.2.Final</weld.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
@@ -205,9 +204,14 @@
 <!--                <version>3.0.1</version>-->
 <!--            </dependency>-->
             <dependency>
+                <groupId>jakarta.json.bind</groupId>
+                <artifactId>jakarta.json.bind-api</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+            <dependency>
                 <groupId>net.bytebuddy</groupId>
                 <artifactId>byte-buddy</artifactId>
-                <version>1.14.18</version>
+                <version>1.15.0</version>
             </dependency>
 <!--            <dependency>-->
 <!--                <groupId>org.jboss.logging</groupId>-->
