@@ -23,6 +23,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import org.jboss.weld.context.activator.ActivateRequestContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @ApplicationScoped
 public class HelloEntryPoint {
@@ -32,6 +34,9 @@ public class HelloEntryPoint {
     HelloPrinter helloPrinter;
 
     public static void main(String[] args) {
+        var logger = Logger.getLogger("io.helidon.Main");
+        logger.setLevel(Level.WARNING);
+        logger.info("Starting the application");
         DynamicWeld.initialize();
         Main.main(args);
         CDI.current().select(HelloEntryPoint.class).get().entryPoint(args);
