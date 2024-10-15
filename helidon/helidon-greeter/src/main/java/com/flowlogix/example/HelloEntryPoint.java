@@ -39,11 +39,13 @@ public class HelloEntryPoint {
         logger.info("Starting the application");
         DynamicWeld.initialize();
         Main.main(args);
-        CDI.current().select(HelloEntryPoint.class).get().entryPoint(args);
+        System.exit(CDI.current().select(HelloEntryPoint.class).get().entryPoint(args));
     }
 
     @ActivateRequestContext
-    void entryPoint(String[] args) {
-        cmdLine.setArguments(args).run(helloPrinter::printHello);
+    int entryPoint(String[] args) {
+        var carrier = cmdLine.setArguments(args);
+        carrier.run(helloPrinter::printHello);
+        return carrier.get(cmdLine.getExitCode()).get();
     }
 }

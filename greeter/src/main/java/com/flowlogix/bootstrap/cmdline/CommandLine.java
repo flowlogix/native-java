@@ -18,16 +18,27 @@ package com.flowlogix.bootstrap.cmdline;
 import jakarta.enterprise.context.ApplicationScoped;
 import java.lang.ScopedValue.Carrier;
 import java.util.NoSuchElementException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @ApplicationScoped
 public class CommandLine {
     private final ScopedValue<String[]> arguments = ScopedValue.newInstance();
+    private final ScopedValue<AtomicInteger> exitCode = ScopedValue.newInstance();
 
     public Carrier setArguments(String[] args) {
-        return ScopedValue.where(arguments, args);
+        return ScopedValue.where(arguments, args)
+                .where(exitCode, new AtomicInteger());
     }
 
     public String[] getArguments() {
         return arguments.orElseThrow(NoSuchElementException::new);
+    }
+
+    public ScopedValue<AtomicInteger> getExitCode() {
+        return exitCode;
+    }
+
+    public void setExitCode(int exitCode) {
+        this.exitCode.orElseThrow(NoSuchElementException::new).set(exitCode);
     }
 }

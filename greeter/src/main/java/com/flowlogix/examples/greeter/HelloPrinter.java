@@ -33,6 +33,7 @@ public class HelloPrinter {
     public void printHello() {
         if (cmdLine.getArguments().length == 0) {
             log.warn("No one to greet \uD83D\uDE00");
+            cmdLine.setExitCode(1);
         } else {
             log.info(greeter.greet(Arrays.stream(cmdLine.getArguments())
                     .collect(Collectors.joining(" "))));
