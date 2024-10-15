@@ -19,7 +19,6 @@ import com.flowlogix.bootstrap.cmdline.CommandLine;
 import com.flowlogix.examples.greeter.HelloPrinter;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
-import jakarta.enterprise.inject.spi.CDI;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -30,10 +29,12 @@ public class HelloEntryPoint {
     @SuppressWarnings("checkstyle:ConstantName")
     private static final SeContainer container = SeContainerInitializer.newInstance().initialize();
 
-    public static void entry(String... args) {
+    public static int entry(String... args) {
         try (container) {
-            CDI.current().select(CommandLine.class).get().setArguments(args)
-                    .run(CDI.current().select(HelloPrinter.class).get()::printHello);
+            var command = container.select(CommandLine.class).get();
+            var carrier = command.setArguments(args);
+            carrier.run(container.select(HelloPrinter.class).get()::printHello);
+            return carrier.get(command.getExitCode()).get();
         }
     }
 }

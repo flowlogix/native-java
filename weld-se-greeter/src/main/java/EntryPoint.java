@@ -17,5 +17,5 @@ import com.flowlogix.example.HelloEntryPoint;
 
 @SuppressWarnings("checkstyle")
 void main(String... args) {
-    HelloEntryPoint.entry(args);
+    System.exit(HelloEntryPoint.entry(args));
 }
