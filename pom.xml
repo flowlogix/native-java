@@ -19,7 +19,7 @@
         <java.preview.release>21</java.preview.release>
         <maven.compiler.release>${java.preview.release}</maven.compiler.release>
         <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
-        <checkstyle.supressionsLocation>${nativejava.basedir}/checkstyle/suppressions.xml</checkstyle.supressionsLocation>
+        <checkstyle.supressionsLocation>${nativejava.basedir}/src/checkstyle/suppressions.xml</checkstyle.supressionsLocation>
         <base.directory.property>nativejava.basedir</base.directory.property>
         <base.directory.groupId>com.flowlogix.native</base.directory.groupId>
         <base.directory.artifactId>java-native-parent</base.directory.artifactId>
