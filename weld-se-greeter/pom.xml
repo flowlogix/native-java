@@ -102,7 +102,7 @@
                 <dependency>
                     <groupId>io.helidon.integrations.graal</groupId>
                     <artifactId>helidon-mp-graal-native-image-extension</artifactId>
-                    <version>4.2.0</version>
+                    <version>4.2.1</version>
                 </dependency>
             </dependencies>
             <build>
