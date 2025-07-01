@@ -87,10 +87,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.commonjava.maven.plugins</groupId>
-                <artifactId>directory-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
                     <excludes>EntryPoint.java</excludes>
