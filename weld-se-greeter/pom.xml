@@ -125,7 +125,6 @@
                         <extensions>true</extensions>
                         <configuration>
                             <buildArgs>
-                                <arg>--enable-preview</arg>
                                 <arg>-H:+UnlockExperimentalVMOptions</arg>
                                 <arg>-march=native</arg>
                             </buildArgs>

@@ -95,7 +95,7 @@
             <properties>
                 <skipITs>false</skipITs>
                 <quarkus.native.enabled>true</quarkus.native.enabled>
-                <quarkus.native.additional-build-args>--enable-preview,-march=native</quarkus.native.additional-build-args>
+                <quarkus.native.additional-build-args>-march=native</quarkus.native.additional-build-args>
             </properties>
         </profile>
     </profiles>

@@ -16,9 +16,7 @@
     </parent>
 
     <properties>
-        <java.preview.release>21</java.preview.release>
-        <maven.compiler.release>${java.preview.release}</maven.compiler.release>
-        <maven.compiler.enablePreview>true</maven.compiler.enablePreview>
+        <maven.compiler.release>25</maven.compiler.release>
         <checkstyle.suppressionsLocation>${maven.multiModuleProjectDirectory}/src/checkstyle/suppressions.xml</checkstyle.suppressionsLocation>
         <payara.start.disable>true</payara.start.disable>
         <slf4j.version>2.0.17</slf4j.version>
