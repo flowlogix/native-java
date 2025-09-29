@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <helidon.version>4.2.7</helidon.version>
+        <helidon.version>4.3.0</helidon.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
