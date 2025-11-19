@@ -50,11 +50,13 @@
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-web-api</artifactId>
                 <version>${jakarta.ee.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-core-api</artifactId>
                 <version>${jakarta.ee.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
