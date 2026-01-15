@@ -52,6 +52,14 @@
                     <groupId>io.helidon.microprofile.weld</groupId>
                     <artifactId>weld-se-core</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>jakarta.enterprise</groupId>
+                    <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.annotation</groupId>
+                    <artifactId>jakarta.annotation-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
