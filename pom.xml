@@ -31,6 +31,15 @@
         <module>payara-micro-greeter</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.flowlogix.depchain</groupId>
+            <artifactId>unit-test</artifactId>
+            <version>109</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
