@@ -28,10 +28,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- *
- * @author lprimak
- */
 @Entity
 @Data
 @Builder
