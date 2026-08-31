@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <quarkus.version>3.38.3</quarkus.version>
+        <quarkus.version>3.39.1</quarkus.version>
     </properties>
 
     <dependencies>
@@ -92,6 +92,10 @@
                     </exclusion>
                     <exclusion>
                         <groupId>com.google.guava</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jsoup</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
                     <exclusion>
