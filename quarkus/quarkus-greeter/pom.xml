@@ -95,6 +95,10 @@
                         <artifactId>*</artifactId>
                     </exclusion>
                     <exclusion>
+                        <groupId>org.jspecify</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
                         <groupId>org.jsoup</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
