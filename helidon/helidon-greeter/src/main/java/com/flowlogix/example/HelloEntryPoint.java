@@ -20,9 +20,9 @@ import com.flowlogix.examples.greeter.HelloPrinter;
 import com.flowlogix.weld.graalvm.DynamicWeld;
 import io.helidon.microprofile.cdi.Main;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.control.ActivateRequestContext;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
-import org.jboss.weld.context.activator.ActivateRequestContext;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
