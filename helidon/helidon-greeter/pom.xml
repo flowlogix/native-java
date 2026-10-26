@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <helidon.version>4.5.5</helidon.version>
+        <helidon.version>4.5.6</helidon.version>
         <entryPoint>com.flowlogix.example.HelloEntryPoint</entryPoint>
     </properties>
 
@@ -180,7 +180,7 @@
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>native-maven-plugin</artifactId>
-                    <version>1.1.14</version>
+                    <version>1.1.16</version>
                     <extensions>true</extensions>
                 </plugin>
             </plugins>

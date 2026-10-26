@@ -106,7 +106,7 @@
                 <dependency>
                     <groupId>io.helidon.integrations.graal</groupId>
                     <artifactId>helidon-mp-graal-native-image-extension</artifactId>
-                    <version>4.5.5</version>
+                    <version>4.5.6</version>
                 </dependency>
             </dependencies>
             <build>
@@ -125,7 +125,7 @@
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
-                        <version>1.1.14</version>
+                        <version>1.1.16</version>
                         <extensions>true</extensions>
                         <configuration>
                             <buildArgs>
