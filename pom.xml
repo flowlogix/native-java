@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.flowlogix</groupId>
         <artifactId>payara-pom</artifactId>
-        <version>148</version>
+        <version>149-T1</version>
     </parent>
 
     <properties>
@@ -55,6 +55,13 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>com.flowlogix</groupId>
+                <artifactId>flowlogix-bom</artifactId>
+                <version>56</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>42.7.14</version>
@@ -86,15 +93,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <excludes>EntryPoint.java</excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
