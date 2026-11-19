@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.flowlogix</groupId>
         <artifactId>quarkus-pom</artifactId>
-        <version>149</version>
+        <version>150</version>
     </parent>
 
 
@@ -58,7 +58,7 @@
                 <artifactId>flowlogix-quarkus-bom</artifactId>
                 <scope>import</scope>
                 <type>pom</type>
-                <version>56</version>
+                <version>57</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
